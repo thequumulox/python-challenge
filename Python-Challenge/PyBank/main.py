@@ -1,17 +1,16 @@
-# import the csv and stats module
+# import the csv 
 import os
 import csv
 
 # Create a file path for the budget_data csv file
 csvpath = os.path.join('Resources', 'budget_data.csv')
 print(csvpath)
-# Read in the csv file
 with open(csvpath, newline='') as csvfile:
 
-    # Using the csvfile object create csvreader variable identifying the delimiter as a comma
+    # Using the csvfile object create csvreader variable 
     csvreader = csv.reader(csvfile, delimiter=',')
 
-    # Set variable to capture header if there is one, and a list for month data and P&L data
+    # Set variable to capture header
     headerval = []
     months = []
     pAndL = []
@@ -22,7 +21,6 @@ with open(csvpath, newline='') as csvfile:
     for row in csvreader:
         # Check if the first row is a header with the label "Date" in the first position
         if row[0] == "Date":
-            # Store the header in a list variable
             headerval = row
             # if not the header row then append the values to the appropriate list
         else:
@@ -30,9 +28,8 @@ with open(csvpath, newline='') as csvfile:
             pAndL.append(int(row[1]))
             # Calculate the difference between the current profit and loss 
              if firstVal:
-                # Set the priorVal to the current P&L value for use in calculating the P&L difference for the second P&L value in the data
+                # Set the priorVal to the current P&L value to determinte the value
                 priorVal = int(row[1])
-                # We've dealt with the first P&L difference value so set the firstVal state variable to False
                 firstVal = False
             else:
                 # Caluculate the first P&L difference
